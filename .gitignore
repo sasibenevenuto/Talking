@@ -332,10 +332,10 @@ __pycache__/
 /src/Ambev.DeveloperEvaluation.Application/bin/Debug/
 /src/Ambev.DeveloperEvaluation.Common/bin/Debug/
 /src/Ambev.DeveloperEvaluation.IoC/bin/Debug/
-/src/Ambev.DeveloperEvaluation.IoC/obj/Debug/net8.0/Ambev.DeveloperEvaluation.IoC.csproj.FileListAbsolute.txt
-/src/Ambev.DeveloperEvaluation.ORM/obj/Debug/net8.0/Ambev.DeveloperEvaluation.ORM.csproj.FileListAbsolute.txt
-/src/Ambev.DeveloperEvaluation.WebApi/obj/Debug/net8.0/Ambev.DeveloperEvaluation.WebApi.csproj.FileListAbsolute.txt
-/src/Ambev.DeveloperEvaluation.WebApi/obj/Debug/net8.0/apphost.exe
-/tests/Ambev.DeveloperEvaluation.Functional/obj/Debug/net8.0/Ambev.DeveloperEvaluation.Functional.csproj.FileListAbsolute.txt
-/tests/Ambev.DeveloperEvaluation.Integration/obj/Debug/net8.0/Ambev.DeveloperEvaluation.Integration.csproj.FileListAbsolute.txt
-/tests/Ambev.DeveloperEvaluation.Unit/obj/Debug/net8.0/Ambev.DeveloperEvaluation.Unit.csproj.FileListAbsolute.txt
+/src/Ambev.DeveloperEvaluation.IoC/obj/Debug/
+/src/Ambev.DeveloperEvaluation.ORM/obj/Debug/
+/src/Ambev.DeveloperEvaluation.WebApi/obj/Debug/
+/src/Ambev.DeveloperEvaluation.WebApi/obj/Debug/
+/tests/Ambev.DeveloperEvaluation.Functional/obj/Debug/
+/tests/Ambev.DeveloperEvaluation.Integration/obj/Debug/
+/tests/Ambev.DeveloperEvaluation.Unit/obj/Debug/
