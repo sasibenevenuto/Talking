@@ -34,7 +34,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public string Branch { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets the statuc to the sale information.
+        /// Gets the status to the sale information.
         /// </summary>
         public bool Cancelled { get; set; } = false;
 
