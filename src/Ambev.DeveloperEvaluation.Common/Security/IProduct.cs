@@ -18,7 +18,7 @@ namespace Ambev.DeveloperEvaluation.Common.Security
         /// Obtém o identificador único da venda que o produto está associado.
         /// </summary>
         /// <returns>O ID da venda como uma string.</returns>
-        public string SaleId { get; }
+        public Guid SaleId { get; }
 
         /// <summary>
         /// Obtém a quantidade do produto na venda.

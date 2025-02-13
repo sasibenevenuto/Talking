@@ -34,7 +34,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public string Branch { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets the statuc to the sale information.
+        /// Gets the status to the sale information.
         /// </summary>
         public bool Cancelled { get; set; } = false;
 
@@ -70,5 +70,11 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// </summary>
         /// <returns>The sales ID as a string.</returns>
         string ISale.Id => Id.ToString();
+
+        /// <summary>
+        /// Gets the products of the sale.
+        /// </summary>
+        /// <returns>The products a list.</returns>
+        public IEnumerable<Product> Products { get; set; } = Enumerable.Empty<Product>();
     }
 }

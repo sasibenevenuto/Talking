@@ -16,7 +16,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// <summary>
         /// Gets the sale id to the product information.
         /// </summary>
-        public string SaleId { get; set; } = string.Empty;
+        public Guid SaleId { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Gets the amount to the product information.
@@ -41,7 +41,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// <summary>
         /// Gets the status to the product information.
         /// </summary>
-        public bool Cancelled { get; set; } = false;      
+        public bool Cancelled { get; set; } = false;
 
         /// <summary>
         /// Gets the unique identifier of the product.
@@ -53,7 +53,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// Gets the sale Id.
         /// </summary>
         /// <returns>The sale id.</returns>
-        string IProduct.SaleId => SaleId;
+        Guid IProduct.SaleId => SaleId;
 
         /// <summary>
         /// Gets the amount.
