@@ -41,7 +41,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// <summary>
         /// Gets the status to the product information.
         /// </summary>
-        public bool Cancelled { get; set; } = false;      
+        public bool Cancelled { get; set; } = false;
 
         /// <summary>
         /// Gets the unique identifier of the product.

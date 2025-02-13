@@ -70,5 +70,11 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// </summary>
         /// <returns>The sales ID as a string.</returns>
         string ISale.Id => Id.ToString();
+
+        /// <summary>
+        /// Gets the products of the sale.
+        /// </summary>
+        /// <returns>The products a list.</returns>
+        public IEnumerable<Product> Products { get; set; } = Enumerable.Empty<Product>();
     }
 }
