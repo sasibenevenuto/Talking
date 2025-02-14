@@ -4,6 +4,9 @@ using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
+using Ambev.DeveloperEvaluation.Common.Security;
+using Ambev.DeveloperEvaluation.Domain.Specifications;
+using FluentValidation.Results;
 
 namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
 {
@@ -44,6 +47,14 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
                 throw new ValidationException(validationResult.Errors);
 
             var sale = _mapper.Map<Sale>(command);
+
+            var activeSaleSpec = new ActiveSaleSpecification();
+            var discountSpecification = activeSaleSpec.DiscountSpecification(sale);
+
+            if (!string.IsNullOrEmpty(discountSpecification))
+            {
+                throw new InvalidOperationException(discountSpecification);
+            }
 
             var createdSale = await _saleRepository.CreateAsync(sale, cancellationToken);
             var result = _mapper.Map<CreateSaleResult>(createdSale);
