@@ -3,6 +3,7 @@ using MediatR;
 using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
 
 namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
 {
@@ -12,6 +13,7 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
     public class CreateSaleHandler : IRequestHandler<CreateSaleCommand, CreateSaleResult>
     {
         private readonly ISaleRepository _saleRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
         /// <summary>
@@ -20,9 +22,10 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
         /// <param name="saleRepository">The sale repository</param>
         /// <param name="mapper">The AutoMapper instance</param>
         /// <param name="validator">The validator for CreateSaleCommand</param>
-        public CreateSaleHandler(ISaleRepository saleRepository, IMapper mapper)
+        public CreateSaleHandler(ISaleRepository saleRepository, IProductRepository productRepository, IMapper mapper)
         {
             _saleRepository = saleRepository;
+            _productRepository = productRepository;
             _mapper = mapper;
         }
 
@@ -40,10 +43,16 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult.Errors);
 
-            var user = _mapper.Map<Sale>(command);
+            var sale = _mapper.Map<Sale>(command);
 
-            var createdUser = await _saleRepository.CreateAsync(user, cancellationToken);
-            var result = _mapper.Map<CreateSaleResult>(createdUser);
+            var createdProduct = await _saleRepository.CreateAsync(sale, cancellationToken);
+            var result = _mapper.Map<CreateSaleResult>(createdProduct);
+
+            foreach (var productCommand in command.Products)
+            {
+                await new CreateProductHandler(_productRepository, _mapper).Handle(productCommand, cancellationToken);
+            }
+
             return result;
         }
     }
