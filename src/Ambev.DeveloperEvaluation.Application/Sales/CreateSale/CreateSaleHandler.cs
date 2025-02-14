@@ -45,11 +45,12 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
 
             var sale = _mapper.Map<Sale>(command);
 
-            var createdProduct = await _saleRepository.CreateAsync(sale, cancellationToken);
-            var result = _mapper.Map<CreateSaleResult>(createdProduct);
+            var createdSale = await _saleRepository.CreateAsync(sale, cancellationToken);
+            var result = _mapper.Map<CreateSaleResult>(createdSale);
 
             foreach (var productCommand in command.Products)
             {
+                productCommand.SaleId = createdSale.Id;
                 await new CreateProductHandler(_productRepository, _mapper).Handle(productCommand, cancellationToken);
             }
 

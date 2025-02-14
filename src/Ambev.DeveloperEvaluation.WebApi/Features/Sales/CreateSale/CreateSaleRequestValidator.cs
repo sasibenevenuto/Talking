@@ -20,7 +20,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale
         /// </remarks>
         public CreateSaleRequestValidator()
         {
-            RuleFor(sale => sale.DateSale).Must(s => s >= DateTime.Now);
+            RuleFor(sale => sale.DateSale).Must(s => s >= DateTime.Now.Date);
             RuleFor(sale => sale.Customer).NotEmpty();
             RuleFor(sale => sale.TotaSaleAmount).Must(p => p > 0);
             RuleFor(sale => sale.Products).Must(p => p.Count > 0);

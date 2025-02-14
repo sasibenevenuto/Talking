@@ -5,7 +5,7 @@
         /// <summary>
         /// Gets or sets the sale id to the product. Must be different from null or empty.
         /// </summary>
-        public Guid SaleId { get; set; } = Guid.Empty;
+        public Guid? SaleId { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Gets or sets the amount to the product. Must be greater than zero.
