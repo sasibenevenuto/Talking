@@ -1,5 +1,7 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
 using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+using Ambev.DeveloperEvaluation.Common.Validation;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -54,5 +56,16 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
         /// Gets or sets  the product to the sale information.
         /// </summary>
         public List<CreateProductCommand> Products { get; set; } = new List<CreateProductCommand>();
+
+        public ValidationResultDetail Validate()
+        {
+            var validator = new CreateSaleCommandValidator();
+            var result = validator.Validate(this);
+            return new ValidationResultDetail
+            {
+                IsValid = result.IsValid,
+                Errors = result.Errors.Select(o => (ValidationErrorDetail)o)
+            };
+        }
     }
 }

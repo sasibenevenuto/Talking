@@ -1,20 +1,15 @@
-﻿using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+﻿using Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
+namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale
 {
     /// <summary>
     /// Validator for CreateSaleCommand that defines validation rules for sale creation command.
     /// </summary>
-    public class CreateSaleCommandValidator : AbstractValidator<CreateSaleCommand>
+    public class CreateSaleRequestValidator : AbstractValidator<CreateSaleRequest>
     {
         /// <summary>
-        /// Initializes a new instance of the CreateSaleCommandValidator with defined validation rules.
+        /// Initializes a new instance of the CreateSaleRequestValidator with defined validation rules.
         /// </summary>
         /// <remarks>
         /// Validation rules include:
@@ -23,7 +18,7 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
         /// - TotaSaleAmount: Must be greater than 0
         /// - Products: Quantity greater than 0
         /// </remarks>
-        public CreateSaleCommandValidator()
+        public CreateSaleRequestValidator()
         {
             RuleFor(sale => sale.DateSale).Must(s => s >= DateTime.Now);
             RuleFor(sale => sale.Customer).NotEmpty();
