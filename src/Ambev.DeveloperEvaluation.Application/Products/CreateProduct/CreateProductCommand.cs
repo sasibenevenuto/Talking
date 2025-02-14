@@ -1,4 +1,6 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
+using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+using Ambev.DeveloperEvaluation.Common.Validation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -53,5 +55,16 @@ namespace Ambev.DeveloperEvaluation.Application.Products.CreateProduct
         /// Gets or sets the status to the product information.
         /// </summary>
         public bool Cancelled { get; set; } = false;
+
+        public ValidationResultDetail Validate()
+        {
+            var validator = new CreateProductCommandValidator();
+            var result = validator.Validate(this);
+            return new ValidationResultDetail
+            {
+                IsValid = result.IsValid,
+                Errors = result.Errors.Select(o => (ValidationErrorDetail)o)
+            };
+        }
     }
 }
